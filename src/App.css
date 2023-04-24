@@ -1,0 +1,9 @@
+.vasu{
+    display: flex;
+}
+.vasu1{
+    width: 100%;
+    height: 40px;
+    margin: 4px 4px;
+    background-color: rgb(114, 189, 255);
+}
