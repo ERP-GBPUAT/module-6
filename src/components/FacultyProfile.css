@@ -137,7 +137,7 @@
   }
   
   a {
-    text-decoration: none;
+    text-decoration: none !important;
     color: #5e72e4;
     background-color: transparent;
     -webkit-text-decoration-skip: objects;
@@ -295,7 +295,7 @@
   .h4,
   .h5,
   .h6 {
-    font-family: inherit;
+    font-family: inherit !important;
     font-weight: 600;
     line-height: 1.5;
     margin-bottom: .5rem;

@@ -5,7 +5,7 @@ import CardProfile from "./CardProfile";
 import { useLocation } from 'react-router-dom';
 // import AddResearchForm from './AddResearchForm';
 
-const MainDashboard = ({btnData,routeTo}) => {
+const MainDashboard = ({data}) => {
     const location = useLocation()
     const [inputDisabled, setInputDisabled] = React.useState(true);
     const handleChange = () => {
@@ -24,10 +24,10 @@ const MainDashboard = ({btnData,routeTo}) => {
             <div className="container-fluid mt-4">
                 <div className="row">
                     <div className="col-xl-4 order-xl-2 mb-5 mb-xl-0">
-                        <CardProfile />
+                        <CardProfile faculty={data} user={data?.User}/>
                     </div>
                     <div className="col-xl-8 order-xl-1">
-                        <UserDetails inputDisabled={inputDisabled} handleChange={handleChange} handleInputDisabled={handleInputDisabled} />
+                        <UserDetails faculty={data} user={data?.User} inputDisabled={inputDisabled} handleChange={handleChange} handleInputDisabled={handleInputDisabled} />
                     </div>
                 </div>
             </div>

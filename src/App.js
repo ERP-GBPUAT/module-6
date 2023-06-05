@@ -1,30 +1,35 @@
 import Home from './components/Home/Home';
-import './App.css';
-// import Navbar from './components/Navbar/Navbar';
-// import Login from './components/Login/Login';
-import FacultyProfile from './components/Profile'
+import './App.css';     
 import { BrowserRouter, Routes,Route } from 'react-router-dom';
-import ResponsiveAppBar from './components/AppBar';
-import AccessibleTable from './components/MarksTable';
-import { useState } from 'react';
-import Dropdown from './components/Dropdown'
-import BasicSelect from './components/Dropdown';
+import Navbar from './components/Navbar';
+import { useEffect } from 'react';
+import StudentProfile from './components/StudentProfile';
+import StudentList from './components/StudentList';
 function App() {
-  const [year,setYear]=useState(2019);
-  const [showMarks,setShowMarks] = useState(false);
+  useEffect(() => {
+    const recMsg = (e) => {
+      e.preventDefault();
+      console.log('data', e.data);
+      if (!e.data.token) {
+        return;
+      }
+      localStorage.setItem('token', e.data.token);
+      localStorage.setItem('data', e.data.user);
+    };
+    window.addEventListener('message', recMsg);
+    return () => {
+      window.removeEventListener('message', recMsg);
+    };
+  }, []);
+  
   return (
     <BrowserRouter>
-    <ResponsiveAppBar setShowMarks = {setShowMarks}/>
-   {!showMarks ?  <>
-    <div className="App">
-      {/* <Navbar/> */}
+    <Navbar />
       <Routes>
         <Route path={"/"} element={<Home />}/>
-        {/* <Route path={"/login"} element={<Login />}/> */}
-        <Route path={"/profile"} element={<FacultyProfile />} />
+        <Route path={"/student/:studentId"} element={<StudentProfile />} />
+        <Route path={"/students/:batch/:department"} element={<StudentList />} />
       </Routes>
-    </div>
-   </> :<> <div><BasicSelect year={year} setYear={setYear}/></div><AccessibleTable year={year} /></>}
     </BrowserRouter>
   );
 }

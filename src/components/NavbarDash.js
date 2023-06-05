@@ -11,17 +11,12 @@ const NavbarDash = () => {
         <div className="container-fluid">
           <div>
           <Link
-            className="h4 mr-4 mb-0 text-darkOliveGreen text-uppercase d-none d-lg-inline-block"
+            className="h5 mr-4 mb-0 text-darkOliveGreen text-uppercase d-none d-lg-inline-block"
             to="/"
           >
             Student profile
           </Link>
-          <Link
-            className="h4 mb-0 text-darkOliveGreen text-uppercase d-none d-lg-inline-block"
-            to="/"
-          >
-            Course Registered
-          </Link>
+          
           </div>
           {/* <form className="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
             <div className="form-group mb-0">
