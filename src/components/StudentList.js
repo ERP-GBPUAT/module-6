@@ -35,6 +35,7 @@ const StudentList = () => {
           body:JSON.stringify({discipline:department,batch})
         });
         const data = await res.json();
+        console.log(data);
         if (data.msg) {
           dispatch({
             type: "FETCH_SUCCESS",
@@ -111,7 +112,7 @@ const StudentList = () => {
                 <td>TITAK</td>
                 <td>55117_vikrantvasu@gbpuat-tech.ac.in</td>
               </tr> */}
-              {data.map((student) => {
+              {data?.map((student) => {
                 return (
                   <tr
                     style={{cursor:"pointer"}}

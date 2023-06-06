@@ -69,8 +69,7 @@ const Home = () => {
     if(!department && !batch){
       setErrorMsg("please select a department or batch")
       return
-    }
-    navigate(`students/${batch}/${department}`)
+    }else{navigate(`students/${batch}/${department}`)}
   }
 
   return (
