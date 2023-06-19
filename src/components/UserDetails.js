@@ -12,16 +12,16 @@ const UserDetails = ({
   useEffect(() => {
     setLuser(JSON.parse(localStorage.getItem('data')))
   }, [])
-  
   return (
     <div className="card bg-white shadow">
       <div className="card-header bg-white border-0">
         <div className="row align-items-center">
           <div className="col-8">
-            <h3 className="mb-0 text-oliveGreen">My account</h3>
+            {JSON.parse(localStorage.getItem('data'))?.staff?.isAdmin?<h3 className="mb-0 text-oliveGreen">Student account</h3>:
+            <h3 className="mb-0 text-oliveGreen">My account</h3>}
           </div>
           <div className="col-4 text-right">
-            {luser?.staff?.isAdmin &&  inputDisabled ? (
+            {/* {JSON.parse(localStorage.getItem('data'))?.staff?.isAdmin &&  (inputDisabled ? (
               <Link
                 onClick={() => handleInputDisabled(true)}
                 className="btn btn-sm btn-primary"
@@ -35,7 +35,7 @@ const UserDetails = ({
               >
                 Update
               </Link>
-            )}
+            ))} */}
           </div>
         </div>
       </div>

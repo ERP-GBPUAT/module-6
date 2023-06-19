@@ -90,6 +90,7 @@
     width: 200px;
     border-radius: .5rem;
     color: black;
+    z-index: 10;
 }
 .menuLogindetail{
     cursor:default;

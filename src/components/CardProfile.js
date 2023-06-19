@@ -15,7 +15,7 @@ const CardProfile = ({faculty,user}) => {
           <div className="card-profile-image mt--3">
             <a href="#">
               <img
-                src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg"
+                src="https://rcpsg.ac.uk/images/jch-optimize/ng/images_people_default.webp"
                 className="rounded-circle"
               />
             </a>

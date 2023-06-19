@@ -13,7 +13,7 @@ const Navbar = () => {
   const handleProfile = () => {
     // fetchuserdata();
     setOpenMenu(false)
-    navigate("/facultyDashboard");
+    navigate("/");
   };
   const handleLogout=()=>{
     localStorage.removeItem('token')
@@ -44,7 +44,7 @@ const Navbar = () => {
                   <img src={person} alt="" />
                 </div>
                 {openMenu?<div className={styles.toggleMenu}>
-                  <div className={styles.menuLogindetail}>Signed in as <b>Udit</b> </div>
+                  <div className={styles.menuLogindetail}>Signed in as <b>{JSON.parse(localStorage.getItem('data'))?.user?.name}</b> </div>
                   <div onClick={handleProfile} className={styles.menuOption}>Profile</div>
                   <div className={styles.menuOption} onClick={handleLogout}>Logout</div>
                 </div>:<></>}

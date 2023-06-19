@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import "./FacultyProfile.css";
 import { useLocation, useParams } from "react-router-dom";
 import NavbarDash from "./NavbarDash";
@@ -17,6 +17,7 @@ const reducer = (state, action) => {
 
 const StudentProfile = ({isResearch}) => {
   const location = useLocation()
+  const [err,setErr] = useState(false)
   const {studentId}=useParams()
   const [{ loading, error, data }, dispatch] = useReducer(reducer, {
     loading: true,
@@ -35,10 +36,11 @@ const StudentProfile = ({isResearch}) => {
           },
         });
         const data = await res.json();
-        if (data.msg) {
+        if (data.msg==="success") {
           dispatch({ type: "FETCH_SUCCESS", payload: data.data});
           console.log(data);
         } else {
+          setErr(true)
           dispatch({ type: "FETCH_FAIL", payload: data.error });
         }
       } catch (error) {
@@ -47,10 +49,10 @@ const StudentProfile = ({isResearch}) => {
     };
     fetchStudent()
   }, []);
-  const handleChange = (e) => {
-    console.log("input");
-  };
-  return (
+  console.log("error",error);
+  if(loading) return <div>Loading....</div>
+  else if(err) return <div style={{display:"flex",justifyContent:"center",margin:"60px",fontSize:"30px",fontWeight:"600"}}>{error}</div>
+  else return (
     <div className="main-content">
         <NavbarDash />
         <MainDashboard data={data} />

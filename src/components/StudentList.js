@@ -36,7 +36,7 @@ const StudentList = () => {
         });
         const data = await res.json();
         console.log(data);
-        if (data.msg) {
+        if (data.msg==="success") {
           dispatch({
             type: "FETCH_SUCCESS",
             payload: data.data,
@@ -75,7 +75,8 @@ const StudentList = () => {
       ) : errorMsg? <div>{errorMsg}</div>:(
       <div className="d-flex align-items-center justify-content-center">
         <div className="container-fluid mx-4 my-4 w-75 ">
-          <table class="table table-striped">
+          <h3 style={{margin:"20px 0"}}>Students of Branch {department} of {batch}</h3>
+          {data.length ?<table class="table table-striped">
             <thead class="thead-dark">
               <tr className="text-white">
                 <th scope="col">Student Id</th>
@@ -128,9 +129,9 @@ const StudentList = () => {
                     <td>{student?.User?.email}</td>
                   </tr>
                 );
-              })}
-            </tbody>
-          </table>
+              })}</tbody>
+          </table>: <div style={{display:"flex",justifyContent:"center",margin:"40px",fontSize:"25px",fontWeight:"600"}}>Students Data does not exists</div> }
+            
         </div>
       </div>
        )}
